@@ -1,0 +1,112 @@
+﻿@using CornerstoneAssessmentMVC.Models
+@model List<Person>
+@{
+    ViewBag.Title = "Cornerstone Assessment";
+}
+@{
+    var orderedPerson = (List<Person>)ViewData["OrderedByAge"];
+}
+@{
+    var menWithBlues = (List<Person>)ViewData["MenWithBlues"];
+}
+@{
+    var orderedMenWithBlues = (List<Person>)ViewData["OrderedMenWithBlues"];
+}
+@{
+    var totalCount = ViewData["TotalCount"];
+}
+@{
+    var totalCountMenWithBlues = ViewData["TotalCountMenWithBlues"];
+}
+@{
+    var lessThan3Friends = ViewData["LessThan3Friends"];
+}
+<table>
+    <tr>
+        <th>
+            Display ALL The People
+        </th>
+        <th>
+            Ordered By Age <br/>(Oldest to Youngest)
+        </th>
+        <th>
+            Active Men With Blue <br />Eyes Over The Age Of 30
+        </th>
+        <th>
+            Ordered By Age (Oldest to Youngest) Active <br/> Men With Blue Eyes Over The Age Of 30
+        </th>
+        <th>
+
+        </th>
+
+    </tr>
+    <tr valign="top">
+        <td valign="top">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        @item.Age | @item.LastName, @item.FirstName | @item.EyeColor | @item.Gender
+                    </li>
+                }
+            </ul>
+        </td>
+        <td valign="top">
+            <ul>
+                @foreach (var item in orderedPerson)
+                {
+                    <li>
+                        @item.LastName, @item.FirstName
+                    </li>
+                }
+            </ul>
+        </td>
+
+        <td valign="top">
+            <ul>
+                @foreach (var item in menWithBlues)
+            {
+                    <li>
+                        @item.Age | @item.LastName, @item.FirstName | @item.EyeColor | @item.Gender
+                    </li>
+                }
+            </ul>
+        </td>
+        <td valign="top">
+            <ul>
+                @foreach (var item in orderedMenWithBlues)
+                {
+                    <li>
+                        @item.LastName, @item.FirstName
+                    </li>
+                }
+            </ul>
+        </td>
+        <td valign="top">
+            <ul>
+                <h4>
+                    Total Count
+                </h4>
+                <li>
+                    @totalCount
+                </li>
+
+                <h4>
+                    Total Count Active Men With Blue Eyes Over The Age Of 30
+                </h4>
+
+                <li>
+                    @totalCountMenWithBlues
+                    </li>
+
+                    <h4>
+                        Number of poeple with less than 3 friends
+                    </h4>
+
+                    <li>
+                        @lessThan3Friends
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
